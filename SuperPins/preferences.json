@@ -355,5 +355,11 @@
         "type": "string",
         "disabledOn": [],
         "defaultValue": "1"
+    },
+    {
+        "property": "mod.folders.reset-to-standard",
+        "label": "Reset folder look to standard",
+        "type": "checkbox",
+        "defaultValue": "1"
     }
 ]

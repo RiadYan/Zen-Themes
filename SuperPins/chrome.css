@@ -111,15 +111,35 @@
             }
         }
 
-        #vertical-pinned-tabs-container, .zen-workspace-pinned-tabs-section:not(:has([zen-dragtarget], zen-folder .tab-group-label-container[zen-dragtarget])) {
-            .tabbrowser-tab[pinned]  {
-                .tab-close-button, .tab-reset-button,
-                .tab-reset-pin-button, .tab-label-container {
-                    display: none !important;
+        @media not (-moz-pref("mod.folders.normal-layout")) {
+
+            #vertical-pinned-tabs-container,
+            .zen-workspace-pinned-tabs-section:not(:has([zen-dragtarget], zen-folder .tab-group-label-container[zen-dragtarget])) {
+                .tabbrowser-tab[pinned] {
+
+                    .tab-close-button,
+                    .tab-reset-button,
+                    .tab-reset-pin-button,
+                    .tab-label-container {
+                        display: none !important;
+                    }
                 }
             }
         }
 
+        @media (-moz-pref("mod.folders.normal-layout")) {
+
+            #vertical-pinned-tabs-container .tabbrowser-tab[pinned]:not(zen-folder .tabbrowser-tab),
+            .zen-workspace-pinned-tabs-section:not(:has([zen-dragtarget], zen-folder .tab-group-label-container[zen-dragtarget])) .tabbrowser-tab[pinned]:not(zen-folder .tabbrowser-tab) {
+
+                .tab-close-button,
+                .tab-reset-button,
+                .tab-reset-pin-button,
+                .tab-label-container {
+                    display: none !important;
+                }
+            }
+        }
         /*disable icon shift when tab was renamed*/
         #navigator-toolbox[zen-sidebar-expanded="true"] {
             & #vertical-pinned-tabs-container>.zen-workspace-tabs-section,
@@ -689,6 +709,15 @@
     @media (-moz-pref("uc.remove-sidebar-scrollbar")) {
         scrollbox:nth-child(5), #tabbrowser-arrowscrollbox .zen-workspace-normal-tabs-section {
             scrollbar-width: none !important;
+        }
+    }
+
+        @media (-moz-pref("mod.folders.normal-layout")) {
+        zen-folder .tabbrowser-tab[pinned]>.tab-stack>.tab-content>.tab-icon-stack {
+
+            transform: none !important;
+            margin-left: unset !important;
+            padding: 0 var(--tab-inline-padding);
         }
     }
 }
